@@ -1,13 +1,13 @@
 version: '3'
 services:
-  hello:
+  ola:
     build: .
     ports:
       - "4000:80"
     networks:
       - "rede"
-  hello_db:
-    image: "postgres:11"
+  redis:
+    image: "redis"
     networks:
       - "rede"
     ports: 
