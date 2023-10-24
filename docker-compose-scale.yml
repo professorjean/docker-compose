@@ -5,21 +5,21 @@ services:
     ports:
       - "4000"
     networks:
-      - "workshop"
+      - "rede"
     labels:
-      - "traefik.backend=hello"
+      - "traefik.backend=ola"
       - "traefik.port=80"
       - "traefik.frontend.rule=Host:localhost"
     depends_on: 
-      - hello_db
+      - redis
   hello_db:
-    image: "postgres:11"
+    image: "redis"
     ports:
       - 5432:5432
     networks:
-      - "workshop"
+      - "redis"
     volumes: 
-      - workshop_data:/var/lib/postgresql/data
+      - dados:/var/lib/postgresql/data
   lb:
     image: traefik
     command: -c /dev/null --web --docker --docker.domain=localhost --logLevel=INFO 
@@ -27,12 +27,12 @@ services:
       - 4000:80
       - 8080:8080
     networks:
-      - "workshop"
+      - "rede"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
 
 networks:
-  workshop:
+  rede:
 
 volumes:
-  workshop_data:
+  dados:
