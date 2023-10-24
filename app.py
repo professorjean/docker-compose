@@ -13,9 +13,9 @@ def ola():
     try:
         visits = redis.incr("counter")
     except RedisError:
-        visits = "<i>Não é possível se conectar ao Redis, contador desativado</i>"
+        visits = "<i>Nao e possivel se conectar ao Redis, contador desativado</i>"
 
-    html = "<h3>Olá {name}!</h3>"            "<b>Servidor:</b> {hostname}<br/>"            "<b>Visitas:</b> {visits}"
+    html = "<h3>Ola {name}!</h3>"            "<b>Servidor:</b> {hostname}<br/>"            "<b>Visitas:</b> {visits}"
     return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
 
 if __name__ == "__main__":
