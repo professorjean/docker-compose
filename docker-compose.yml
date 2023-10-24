@@ -5,19 +5,19 @@ services:
     ports:
       - "4000:80"
     networks:
-      - "workshop"
+      - "rede"
   hello_db:
     image: "postgres:11"
     networks:
-      - "workshop"
+      - "rede"
     ports: 
       - 5432:5432
     volumes: 
-      - workshop_data:/var/lib/postgresql/data
+      - dados:/var/lib/postgresql/data
       
 
 networks:
-  workshop:
+  rede:
 
 volumes:
-  workshop_data:
+  dados:
