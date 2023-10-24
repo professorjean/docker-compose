@@ -9,15 +9,7 @@ services:
   redis:
     image: "redis"
     networks:
-      - "rede"
-    ports: 
-      - 5432:5432
-    volumes: 
-      - dados:/var/lib/postgresql/data
-      
+      - "rede"    
 
 networks:
   rede:
-
-volumes:
-  dados:
