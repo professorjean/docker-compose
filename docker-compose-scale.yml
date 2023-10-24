@@ -17,7 +17,7 @@ services:
     networks:
       - "rede"
   lb:
-    image: traefik
+    image: traefik:v1.7
     command: -c /dev/null --web --docker --docker.domain=localhost --logLevel=INFO 
     ports:
       - 4000:80
