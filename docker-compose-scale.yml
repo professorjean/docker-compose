@@ -15,7 +15,7 @@ services:
   redis:
     image: "redis"
     networks:
-      - "redis"
+      - "rede"
   lb:
     image: traefik
     command: -c /dev/null --web --docker --docker.domain=localhost --logLevel=INFO 
