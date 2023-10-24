@@ -9,14 +9,14 @@ redis = Redis(host="redis", db=0, socket_connect_timeout=2, socket_timeout=2)
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
+def ola():
     try:
         visits = redis.incr("counter")
     except RedisError:
-        visits = "<i>Não é possível se conecta ao Redis, contador desativado</i>"
+        visits = "<i>Não é possível se conectar ao Redis, contador desativado</i>"
 
     html = "<h3>Olá {name}!</h3>"            "<b>Servidor:</b> {hostname}<br/>"            "<b>Visitas:</b> {visits}"
-    return html.format(name=os.getenv("NAME", "Mundo"), hostname=socket.gethostname(), visits=visits)
+    return html.format(name=os.getenv("NAME", "world"), hostname=socket.gethostname(), visits=visits)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
