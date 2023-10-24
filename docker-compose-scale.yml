@@ -1,6 +1,6 @@
 version: '3'
 services:
-  hello:
+  ola:
     build: .
     ports:
       - "4000"
@@ -12,14 +12,10 @@ services:
       - "traefik.frontend.rule=Host:localhost"
     depends_on: 
       - redis
-  hello_db:
+  redis:
     image: "redis"
-    ports:
-      - 5432:5432
     networks:
       - "redis"
-    volumes: 
-      - dados:/var/lib/postgresql/data
   lb:
     image: traefik
     command: -c /dev/null --web --docker --docker.domain=localhost --logLevel=INFO 
@@ -33,6 +29,3 @@ services:
 
 networks:
   rede:
-
-volumes:
-  dados:
