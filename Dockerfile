@@ -2,7 +2,7 @@
 # 
 #
 # Use an official Python runtime as a parent image
-FROM python:2.7
+FROM python:2.7-slim
 
 LABEL MAINTAINER foo@bar.com
 
